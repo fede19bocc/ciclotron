@@ -75,5 +75,17 @@ def creaListaDatosProduccion(log):
     log = [log[0][0], log[0][1], log[0][2], log[0][3], log[1]]
     
     return log
-
+#%%
+nombreCol = ['Time', 'Arc-I', 'Arc-V', 'Gas flow', 'Dee-1-kV', 'Dee-2-kV', 'Magnet-I', 
+ 'Foil-I', 'Coll-l-I', 'Target-I', 'Coll-r-I', 'Vacuum-P', 'Target-P', 
+ 'Delta Dee-kV', 'Phase load', 'Dee ref-V', 'Probe-I', 'He cool-P', 
+ 'Flap1-pos', 'Flap2-pos', 'Step pos', 'Extr pos', 'Balance', 'RF fwd-W', 
+ 'RF refl-W', 'Foil No']
+#%%
+def graficoParametro(columna, batch, producciones):
+    datosBatch = producciones[producciones['Batch']==batch]
+    dfDatosBatch = datosBatch['logs'][1]
+    x = [3/60 * i for i in range(len(dfDatosBatch))] #convierto eje x a minutos
+    plt.plot(x, dfDatosBatch[columna], label = columna)
+    
 
