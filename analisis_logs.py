@@ -84,7 +84,7 @@ nombreCol = ['Time', 'Arc-I', 'Arc-V', 'Gas flow', 'Dee-1-kV', 'Dee-2-kV', 'Magn
 #%%
 def graficoParametro(columna, batch, producciones):
     datosBatch = producciones[producciones['Batch']==batch]
-    dfDatosBatch = datosBatch['logs'][1]
+    dfDatosBatch = datosBatch['logs'][0]
     x = [3/60 * i for i in range(len(dfDatosBatch))] #convierto eje x a minutos
     plt.plot(x, dfDatosBatch[columna], label = columna)
     
