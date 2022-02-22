@@ -46,8 +46,11 @@ def varios_logs(desde, hasta):
     direccion ="logs-pruebas\\"
     encabezados = ['Posicion', 'Blanco', 'Batch', 'Fecha', 'logs']
     for  i in range(desde, hasta+1):
-        num_log = direccion + str(i) + ".log"
-        logs.append(creaListaDatosProduccion(datos_log(num_log)))
+        try:
+            num_log = direccion + str(i) + ".log"
+            logs.append(creaListaDatosProduccion(datos_log(num_log)))
+        except FileNotFoundError:
+            pass
         
     return pd.DataFrame(logs, columns=encabezados)
 
