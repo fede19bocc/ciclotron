@@ -81,11 +81,23 @@ nombreCol = ['Time', 'Arc-I', 'Arc-V', 'Gas flow', 'Dee-1-kV', 'Dee-2-kV', 'Magn
  'Delta Dee-kV', 'Phase load', 'Dee ref-V', 'Probe-I', 'He cool-P', 
  'Flap1-pos', 'Flap2-pos', 'Step pos', 'Extr pos', 'Balance', 'RF fwd-W', 
  'RF refl-W', 'Foil No']
+
+ejeY = ['[seg]', '[mA]', '[V]', '[sccm]', '[kV]', '[kV]', '[A]', '[µA]',
+        '[µA]', '[µA]', '[µA]', '[mbar]', '[psi]', '[kV]', '[°]', '[kV]',
+        '[µA]', '[psi]', '[%]', '[%]', '[%]', '[%]', '[%]', '[W]', '[W]', '']
+
+nombreCol = pd.DataFrame(nombreCol, columns=['Nombre'])
+ejeY = pd.DataFrame(ejeY, columns=['unidades'])
+datosGraficos = [nombreCol, ejeY]
+datosGraficos = pd.concat(datosGraficos, 1)
 #%%
-def graficoParametro(columna, batch, producciones):
+def graficoParametro(index, batch, producciones):
     datosBatch = producciones[producciones['Batch']==batch]
-    dfDatosBatch = datosBatch['logs'][0]
+    dfDatosBatch = datosBatch['logs'][datosBatch.index[0]] #selecciono el df dentro de la lista
     x = [3/60 * i for i in range(len(dfDatosBatch))] #convierto eje x a minutos
-    plt.plot(x, dfDatosBatch[columna], label = columna)
+    plt.plot(x, dfDatosBatch[datosGraficos['Nombre'][index]], 
+             label = datosGraficos['Nombre'][index])
+    plt.ylabel(datosGraficos['unidades'][index])
+    plt.xlabel('[min]')
     
 
