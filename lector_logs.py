@@ -4,6 +4,11 @@ Created on Fri Jun 11 19:58:42 2021
 
 @author: Fede
 """
+
+'''
+Discontinuado, lector_logs y analisis_logs se unificaron en monitores.py 
+'''
+
 # modulos
 import csv
 import matplotlib.pyplot as plt

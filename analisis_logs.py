@@ -4,7 +4,9 @@ Created on Mon Jan 31 09:11:07 2022
 
 @author: tecciclotron
 """
-
+'''
+Discontinuado, lector_logs y analisis_logs se unificaron en monitores.py 
+'''
 # modulos
 import csv
 import matplotlib.pyplot as plt
