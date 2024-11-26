@@ -102,7 +102,6 @@ def agrupar_monitores(datos):
             l.sort_index(inplace=True)
     
     return monitores
-m=agrupar_monitores(d)
 
 def graficar_monitores(monitores, monitores_elegidos, fecha_i, fecha_f, tiempo_i, tiempo_f, formato=None):
     '''
@@ -142,9 +141,9 @@ def graficar_monitores(monitores, monitores_elegidos, fecha_i, fecha_f, tiempo_i
     sub.set_ylabel('Tasa dosis [µSv/h]')
     sub.legend()
 
-    # plt.show()
+    plt.show()
     
-
+# m=agrupar_monitores(d)
 # d=procesar_datos_txt('DATOS_AREA_4T2019_mod.txt')
 # monitores = agrupar_monitores(d)
 # graficar_monitores(monitores, ['Ciclotron 1', 'Ciclotron 2'], '2023-12-19', '2023-12-19', '10:25', '10:44', 'minuto')
